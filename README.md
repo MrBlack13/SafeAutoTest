@@ -17,3 +17,5 @@ I attempted to make some properties Private but ran into trouble.  In a real sit
 I would have liked to figure out (if it's even a good idea) to hold and reference Drive Class in an Array instead of using the IList.
 
 For a large project with a team, I would leave it up to the team but I see that in C# you can put classes in separate file.  I am not sure if the team would think this is more confusing to not have it all in one place or it might be nicer to have smaller files to look through. Sometimes too many files can be a burden too.
+
+BTW:  I didn't have Visual Studio nor GIT installed on my computer until yesyerday and this morning (respectivly).  ;-)
