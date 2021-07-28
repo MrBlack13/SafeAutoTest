@@ -24,23 +24,38 @@ namespace SafeAutoTest
 
         public void AddTrip(DateTime startTime, DateTime endTime, Double milage) 
 		{
-            trips.Add(new Trip() {startTime=startTime,endTime=endTime,milage=milage});
-            trips[(trips.Count - 1 )].SetTrip(startTime,endTime,milage);
-            this.milesTotalCalc = 0;
-            this.minsTotal = 0;
+            bool overlap = false;
             foreach(var trip in trips){
-                if(trip.tripMPH < 100 && trip.tripMPH > 5){
-                    this.milesTotalCalc += trip.milage;
-                    this.minsTotal += trip.minutes;
-                    this.averageSpeedCalc = (this.milesTotalCalc / this.minsTotal) * 60;
-                    this.averageSpeed = Convert.ToInt32(System.Math.Round(this.averageSpeedCalc)); 
-                    this.milesTotal = Convert.ToInt32(System.Math.Round(this.milesTotalCalc)); 
+                overlap = startTime < trip.endTime && trip.startTime < endTime;
+            }
+            if(overlap){
+                Console.WriteLine("Impossible Trip! One driver cannot have two trips that overlap in times.");
+                Console.WriteLine(this.driverName + "'s trips are:");
+                foreach(var trip in trips){
+                    Console.WriteLine(trip.startTime.ToString("HH:mm")  + " - " + trip.endTime.ToString("HH:mm") + " " + trip.milage);
+                }
+
+                System.Threading.Thread.Sleep(5000);
+
+            } else {
+                trips.Add(new Trip() {startTime=startTime,endTime=endTime,milage=milage});
+                trips[(trips.Count - 1 )].SetTrip(startTime,endTime,milage);
+                this.milesTotalCalc = 0;
+                this.minsTotal = 0;
+                foreach(var trip in trips){
+                    if(trip.tripMPH < 100 && trip.tripMPH > 5){
+                        this.milesTotalCalc += trip.milage;
+                        this.minsTotal += trip.minutes;
+                        this.averageSpeedCalc = (this.milesTotalCalc / this.minsTotal) * 60;
+                        this.averageSpeed = Convert.ToInt32(System.Math.Round(this.averageSpeedCalc)); 
+                        this.milesTotal = Convert.ToInt32(System.Math.Round(this.milesTotalCalc)); 
+                    }
                 }
             }
-		}
+		} // Driver-AddTrip
 
 
-    }
+    } //Driver
 
     class Trip {
         public DateTime startTime { get; set; }
@@ -181,9 +196,9 @@ namespace SafeAutoTest
             }
 
             TimeSpan interval = endTime - startTime;
-            if( interval.Minutes <= 0) {
+            if( interval.TotalMinutes <= 0) {
                 Console.Clear();
-                Console.WriteLine("Trip syntax error: StartTime is after EndTime. Please fix and try again.");
+                Console.WriteLine("Trip syntax error: StartTime is after EndTime. Please fix and try again." + ( interval.TotalMinutes ));
                 return false;
             }
 
@@ -235,13 +250,3 @@ namespace SafeAutoTest
     } //Program
 
 }
-
-
-/*
-Driver Dan
-Driver Alex
-Driver Bob
-Trip Dan 07:15 07:45 17.3
-Trip Dan 06:12 06:32 21.8
-Trip Alex 12:01 13:16 42.0
-*/
