@@ -2,79 +2,12 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
+using SATDriverLib;
+
 
 namespace SafeAutoTest
 {
 
-    public class Driver
-    {
-        public  string driverName { get; set; }
-        public  double averageSpeedCalc { get; set; }
-        public  int averageSpeed { get; set; }
-        public  double milesTotalCalc{ get; set; } 
-        public  int milesTotal{ get; set; }
-        public  Double minsTotal { get; set; }
-        public  DateTime startTime { get; set; }
-        public  DateTime endTime { get; set; }
-        public  double milage { get; set; }
-        
-        IList<Trip> trips = new List<Trip>();
-
-
-
-        public void AddTrip(DateTime startTime, DateTime endTime, Double milage) 
-		{
-            bool overlap = false;
-            foreach(var trip in trips){
-                overlap = startTime < trip.endTime && trip.startTime < endTime;
-            }
-            if(overlap){
-                Console.WriteLine("Impossible Trip! One driver cannot have two trips that overlap in times.");
-                Console.WriteLine(this.driverName + "'s trips are:");
-                foreach(var trip in trips){
-                    Console.WriteLine(trip.startTime.ToString("HH:mm")  + " - " + trip.endTime.ToString("HH:mm") + " " + trip.milage);
-                }
-
-                System.Threading.Thread.Sleep(5000);
-
-            } else {
-                trips.Add(new Trip() {startTime=startTime,endTime=endTime,milage=milage});
-                trips[(trips.Count - 1 )].SetTrip(startTime,endTime,milage);
-                this.milesTotalCalc = 0;
-                this.minsTotal = 0;
-                foreach(var trip in trips){
-                    if(trip.tripMPH < 100 && trip.tripMPH > 5){
-                        this.milesTotalCalc += trip.milage;
-                        this.minsTotal += trip.minutes;
-                        this.averageSpeedCalc = (this.milesTotalCalc / this.minsTotal) * 60;
-                        this.averageSpeed = Convert.ToInt32(System.Math.Round(this.averageSpeedCalc)); 
-                        this.milesTotal = Convert.ToInt32(System.Math.Round(this.milesTotalCalc)); 
-                    }
-                }
-            }
-		} // Driver-AddTrip
-
-
-    } //Driver
-
-    class Trip {
-        public DateTime startTime { get; set; }
-        public DateTime endTime { get; set; }
-        public double milage { get; set; }
-        public double minutes { get; set; }
-        public double tripMPH { get; set; }
-        //method to set trip details
-        public void SetTrip(DateTime startTime, DateTime endTime, double milage) 
-		{
-            TimeSpan interval = endTime - startTime;
-			this.startTime  = startTime;
-			this.endTime    = endTime;
-            this.minutes    = interval.TotalMinutes;
-			this.milage     = milage;
-            this.tripMPH    = (milage / this.minutes)*60;
-		}
-         
-    } // Trip
     class Program
     {
         static void Main(string[] args)
@@ -85,7 +18,7 @@ namespace SafeAutoTest
             bool isDone = false;
             while (!isDone)
             {
-                line = Console.ReadLine();
+                 line = Console.ReadLine();
                 string[] wordsInput = line.Split(' ');
 
                 switch(wordsInput[0]) 
@@ -238,7 +171,7 @@ namespace SafeAutoTest
 
         } // DisplayStats
 
-        static void AddTrip(IList<Driver> driversList,string driverName,DateTime startTime,DateTime endTime,Double milage)
+        static void AddTrip(IList<Driver> driversList,string driverName,DateTime startTime,DateTime endTime,double milage)
         {
             foreach(var driver in driversList){
                 if(driver.driverName == driverName){

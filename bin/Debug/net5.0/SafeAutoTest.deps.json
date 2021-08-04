@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v5.0": {
       "SafeAutoTest/1.0.0": {
+        "dependencies": {
+          "SATDriverLib": "1.0.0"
+        },
         "runtime": {
           "SafeAutoTest.dll": {}
+        }
+      },
+      "SATDriverLib/1.0.0": {
+        "runtime": {
+          "SATDriverLib.dll": {}
         }
       }
     }
   },
   "libraries": {
     "SafeAutoTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SATDriverLib/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,14 +1,34 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "SATDriverLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/SATDriverLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SATDriverLib.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SATDriverLib/1.0.0": {
+      "type": "project",
+      "path": "../SATDriverLib/SATDriverLib.csproj",
+      "msbuildProject": "../SATDriverLib/SATDriverLib.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "SATDriverLib >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\rsbla\\.nuget\\packages\\": {}
+    "C:\\Users\\rsbla\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -19,16 +39,28 @@
       "packagesPath": "C:\\Users\\rsbla\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\rsbla\\SafeAutoTest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rsbla\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rsbla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://www.nuget.org": {}
+      },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\rsbla\\SATDriverLib\\SATDriverLib.csproj": {
+              "projectPath": "C:\\Users\\rsbla\\SATDriverLib\\SATDriverLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

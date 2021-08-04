@@ -5,11 +5,14 @@ C:\Users\rsbla\SafeAutoTest\bin\Debug\net5.0\SafeAutoTest.runtimeconfig.dev.json
 C:\Users\rsbla\SafeAutoTest\bin\Debug\net5.0\SafeAutoTest.dll
 C:\Users\rsbla\SafeAutoTest\bin\Debug\net5.0\ref\SafeAutoTest.dll
 C:\Users\rsbla\SafeAutoTest\bin\Debug\net5.0\SafeAutoTest.pdb
+C:\Users\rsbla\SafeAutoTest\bin\Debug\net5.0\SATDriverLib.dll
+C:\Users\rsbla\SafeAutoTest\bin\Debug\net5.0\SATDriverLib.pdb
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.csproj.AssemblyReference.cache
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.AssemblyInfoInputs.cache
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.AssemblyInfo.cs
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.csproj.CoreCompileInputs.cache
+C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.csproj.CopyComplete
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.dll
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\ref\SafeAutoTest.dll
 C:\Users\rsbla\SafeAutoTest\obj\Debug\net5.0\SafeAutoTest.pdb
